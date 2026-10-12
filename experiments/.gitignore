@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+# Keep datasets and experiment artifacts external even if copied here by mistake.
+*.jsonl
+*.json
+*.zip
+*.tar*
+data/
+results/

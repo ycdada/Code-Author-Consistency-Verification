@@ -1,0 +1,14 @@
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+data/
+datasets/
+private/
+outputs/
+results/
+*.zip
+*.tar.gz
+.DS_Store

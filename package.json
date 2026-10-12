@@ -1,0 +1,14 @@
+{
+  "name": "code-author-consistency-verification",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser-local C++ style evidence workbench and reproducible verification experiments",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "serve": "python -m http.server 8080 --directory dist"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "Apache-2.0"
+}

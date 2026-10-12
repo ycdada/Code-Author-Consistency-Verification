@@ -1,0 +1,22 @@
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+/data/
+/datasets/
+private/
+outputs/
+results/
+*.zip
+*.tar.gz
+.DS_Store
+
+# Private hosting identity and optional heavyweight artifacts
+.openai/
+*.bin
+*.safetensors
+*.pkl
+*.npz
+*.npy

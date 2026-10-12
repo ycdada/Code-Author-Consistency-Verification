@@ -1,0 +1,31 @@
+name: 工程回归
+on:
+  push:
+    branches: [main, 'feat/**']
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: regression-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: JavaScript 工程测试
+        run: node --test tests/*.test.cjs
+      - name: 安装固定实验依赖
+        run: python -m pip install -r experiments/requirements.txt -r experiments/requirements-structural.txt
+      - name: Python 实验管线工程测试
+        run: python -m unittest discover -s tests -p 'test_*.py' -v

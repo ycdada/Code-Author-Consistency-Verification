@@ -80,3 +80,20 @@ python -m unittest discover -s tests -p 'test_*.py' -v
 5. 只有经过独立评估的组件才提升为正式判别功能。
 
 本仓库沿用仓库原有 Apache-2.0 许可；外部数据、论文和第三方模型各自适用原许可，不被该许可覆盖。
+
+## 公开数据获取与复现
+
+[CodeNet 获取与准备](experiments/data/README.md)提供官方来源下载、摘要校验、安全流式读取、冻结的40/100账户选样及聚合统计脚本；[数据卡](experiments/data/DATASET_CARD.md)说明许可、时间跨度、长度分布与选择偏差。原始数据必须放在仓库外，本仓库不包含源码数据或逐账户清单。
+
+离线合成数据管线测试：`python -m unittest discover -s experiments/data/tests -v`。完整数据准备约需12 GB可用空间，不是运行浏览器工作台的前提。评分与分割实验见[实验说明](experiments/README.md)。
+
+## 已完成的研究检查点
+
+- [注册内作者矩阵](experiments/CODENET_RESULTS.md)：40个公开账号、1811份C++，完整报告12组配置及空分区失败。
+- [未见作者迁移](experiments/AUTHOR_TRANSFER_RESULTS.md)：100账号4549份，40开发/20校准/40最终测试作者。严格时间下注册与评分覆盖不足，不能据此声称40名学生可靠有效。
+- [一次性盲仿写](experiments/GENERATED_STRESS_RESULTS.md)：三例可构造，一例不可构造；固定阈值，完整报告标记与拒判，样本极少。
+- [格式与改名诊断](experiments/ROBUSTNESS_RESULTS.md)：表示敏感性不等于检测效果，接受门槛导致的不变量不能充当独立稳健性证明；附[后验工程修正记录](experiments/ROBUSTNESS_CORRECTIONS.md)。
+- [可选预训练提取器](experiments/PRETRAINED_EMBEDDINGS.md)：固定官方C++模型，离线CPU推理工程验证完成；不在浏览器中加载，真实迁移实验仍进行中。
+- [验收与学生前瞻方案](docs/ACCEPTANCE_AND_FIELD_PROTOCOL.md)：区分研究交付、浏览器验收及未来课堂验证，后两项尚未完成。
+
+详细进度、精确测试数、远端检查及恢复方法见 [PROGRESS.md](PROGRESS.md)。浏览器交互仍受正常登录要求阻塞；Node模拟DOM测试不替代真实浏览器验收。

@@ -55,10 +55,17 @@ python -m http.server 8080 --directory dist
 Node.js 18 或以上：
 
 ```sh
-node --test tests/engine.test.cjs
+node --test tests/*.test.cjs
 ```
 
 工程测试检查提取器和数据流程是否符合定义；通过并不等于可以识别 AI。
+
+Python实验管线及固定依赖、题目/时间分割、历史量对照见 [实验说明](experiments/README.md)。CST结构提取见 [结构特征说明](experiments/STRUCTURAL_FEATURES.md)。已有公开数据来源诊断及失败结果见 [首轮诊断结果](experiments/AI_DIAGNOSTIC_RESULTS.md)，该诊断不具有作者或题目隔离。
+
+```sh
+python -m pip install -r experiments/requirements.txt -r experiments/requirements-structural.txt
+python -m unittest discover -s tests -p 'test_*.py' -v
+```
 
 ## 隐私与数据
 
